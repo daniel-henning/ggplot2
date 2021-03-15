@@ -13,7 +13,7 @@ index.dotplot <- function(df, vars, group, log2 = FALSE){
     }else{median.val <- c(median.val, median(df[,vars][idx])) }
     df$index[idx][order(df[,vars][idx])] <- seq(along = df[,vars][idx])
   }; names(median.val) <- unique(df[,group])
-  #df <- df[order(df[,"APM"], df$index),]
+
   df[,group] <- factor(df[,group], levels = names(sort(median.val)))
   p <- ggplot(df, aes(x = index, y = get(vars))) +
     geom_point(aes(color = get(group))) +
