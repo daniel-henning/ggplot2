@@ -1,7 +1,25 @@
 #### Loading required packages
-ibrary(ggplot2)
+library(ggplot2)
 
+###################################################################
+# geom_boxplot()
+ggplot(data = iris) +
+  geom_boxplot(aes(x=Species, y=Sepal.Length, fill = Species), width = .5, outlier.shape = NA) + 
+  #geom_jitter(shape=16, position=position_jitter(0.2)) + 
+  guides(fill = guide_legend(title = "Species"))
 
+###################################################################
+# geom_violin()
+ggplot(data = iris) +
+  geom_violin(aes(x=Species, y=Sepal.Length, fill = Species), width = .5, outlier.shape = NA) + 
+  #geom_jitter(shape=16, position=position_jitter(0.2)) + 
+  guides(fill = guide_legend(title = "Species"))
+
+###################################################################
+# geom_jitter()
+ggplot(data = iris) +
+  geom_jitter(aes(x=Species, y=Sepal.Length, color = Species), outlier.shape = NA, hape=16, position=position_jitter(0.2)) + 
+  guides(fill = guide_legend(title = "Species"))
 
 ###################################################################
 # geom_dotplot()
