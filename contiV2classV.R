@@ -21,3 +21,22 @@ contiV2class <- function(df, x = "Class1", y = "Class2"){
   
 }
 
+####################################################################################
+biBarPlot <- function(df, x, y, fill = NA, title = NULL, xlab = NULL, ylab = NULL){
+  easypackages::libraries(c("ggplot2"))
+  commapos <- function(x, ...){format(abs(x), big.mark = ",", trim = TRUE,scientific = FALSE, ...)}
+  if(!is.null(fill)){
+    ggplot(data=dane,aes(x = x,y = y, fill = get(fill))) +
+      geom_bar(stat="identity") +
+      #labs(title = title, x = xlab, y = ylab)  +
+      guides(fill = guide_legend(title = fill)) +
+    scale_y_continuous(labels = commapos) +
+      coord_flip()
+  }else{
+    ggplot(data=dane,aes(x = x,y = y)) +
+      geom_bar(stat="identity") +
+      #labs(title = title, x = xlab, y = ylab) +
+    scale_y_continuous(labels = commapos) +
+      coord_flip()
+  }
+}
